@@ -1,0 +1,4 @@
+# Exclude directories
+
+node_modules
+typings

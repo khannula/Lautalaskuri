@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Syötä tiedot</h1>
+    <!--form-->
+    <form *ngIf="active" (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="form-group">
+          
+            <label for="name">Laudoitettava ala (m<sup>2</sup>)</label>
+            <input type="text" class="form-control" id="pintaala" 
+                   required
+                   [(ngModel)]="model.pintaala" name="pintaala">
+                   
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-group">
+            <label for="leveys">Laudan leveys (tuumaa)</label>
+            <select class="form-control"  id="leveys"
+                    required
+                    [(ngModel)]="model.leveys" name="leveys">
+              <option *ngFor="let p of leveydet" [value]="p">{{p}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-8">
+              <button type="submit" class="btn btn-default bottomaligned" (click)="laskeMenekki(model)" >Laske</button>
+        </div>
+      </div>
+    </form>
+    <div *ngIf="menekki > 0">
+      <h1>Laudan menekki</h1>
+        <p class="lead">Tarvitset {{model.leveys}} tuumaista lautaa {{menekki.toFixed(2)}} metriä.</p>
+    </div>
+    <!--{{selectedLeveys}}
+    {{model.pintaala}}
+    {{menekki}}-->
+</div>
